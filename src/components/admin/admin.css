@@ -1,0 +1,96 @@
+/* Admin Dashboard CSS Starts */
+
+/* General Admin Dashboard Container */
+.admin-dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f7;
+  }
+  
+  /* Main Dashboard Style */
+  .admin-dashboard {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  /* Title */
+  .admin-dashboard h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Navigation for Admin */
+  .admin-nav {
+    margin-top: 20px;
+  }
+  
+  /* Navigation Links Styling */
+  .admin-nav-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style for each navigation item */
+  .admin-nav-links li {
+    margin: 15px 0; /* Increased margin for spacing */
+  }
+  
+  .admin-nav-links a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Ensures that padding is respected */
+    width: 100%; /* Full width of the parent */
+  }
+  
+  /* Hover effect for links */
+  .admin-nav-links a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .admin-dashboard {
+      padding: 30px;
+      width: 95%;
+    }
+  
+    .admin-dashboard h1 {
+      font-size: 1.75rem;
+    }
+  
+    .admin-nav-links a {
+      padding: 10px 15px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-dashboard {
+      padding: 20px;
+    }
+  
+    .admin-dashboard h1 {
+      font-size: 1.5rem;
+    }
+  
+    .admin-nav-links a {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+  }
+  
+  /* Admin Dashboard CSS Ends */
+  

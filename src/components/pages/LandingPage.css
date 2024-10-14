@@ -1,0 +1,58 @@
+.landing-page {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .hero {
+    background-color: #f7f7f7;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .cta-btn {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .features {
+    padding: 50px;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .feature-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  
+  .feature {
+    max-width: 300px;
+  }
+  
+  .call-to-action {
+    padding: 50px;
+    text-align: center;
+    background-color: #e2e2e2;
+  }
+  
+  .call-to-action h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
