@@ -6,11 +6,13 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       {/* Hero Section */}
-      <div className="hero">
-        <h1>Welcome to Gym Receipts Manager</h1>
-        <p>Manage your gym payment receipts and notifications with ease!</p>
-        <Link to="/login" className="cta-btn">Get Started</Link>
-      </div>
+      <section id="home">
+        <div class="hero-container">
+            <h2>Welcome to HSJ FITNESS</h2>
+            <p>Your fitness journey starts here. Let us help you reach your goals.</p>
+            <Link to="/signup" className="cta-btn">Sign Up Now</Link>
+        </div>
+      </section>
 
       {/* Features Section */}
       <div className="features">
@@ -30,12 +32,25 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Call to Action Section */}
+      
+      <section id="about">
+          <div class="container">
+              <h2>About Us</h2>
+              <p>HSJ FITNESS is dedicated to providing top-notch fitness facilities and guidance. We have modern equipment, professional trainers, and a community that will motivate you to reach your fitness potential.</p>
+          </div>
+      </section>
+      
       <div className="call-to-action">
         <h2>Ready to join?</h2>
         <Link to="/signup" className="cta-btn">Sign Up Now</Link>
       </div>
+      <section id="contact">
+          <div class="container">
+              <h2>Contact Us</h2>
+              <p>Have any questions or want to learn more? Reach out to us anytime!</p>
+              <p>Email: support@gymmanage.com | Phone: +123 456 7890</p>
+          </div>
+      </section>
     </div>
   );
 };
