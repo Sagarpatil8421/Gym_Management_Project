@@ -1,3 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.logo {
+  float: left;
+  font-size: 24px;
+}
+
+.logo span {
+  color: #e8491d;
+}
+
+nav ul {
+  list-style: none;
+  float: right;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #e8491d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: #e8491d;
+}
+
+/* Hero Section */
+#home {
+  background-image: url('../../../public/gymbg.webp'); /* Add a gym-related background image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+#home h2 {
+  font-size: 48px;
+}
+
+#home p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+/* About Us Section */
+#about {
+  padding: 40px 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+#about p {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Services Section */
+#services {
+  padding: 40px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.service-card {
+  display: inline-block;
+  width: 30%;
+  margin: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Contact Section */
+#contact {
+  padding: 40px 0;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+#contact p {
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+
+
+
 .landing-page {
     font-family: 'Arial', sans-serif;
     color: #333;
