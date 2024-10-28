@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 5vw !important;
   background-color: #333;
   color: white;
 }
@@ -75,6 +75,7 @@
     flex-direction: column;
     width: 100%;
     display: none;
+    margin: 0;
   }
 
   .navbar-links.active {

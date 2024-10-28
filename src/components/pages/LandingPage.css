@@ -31,21 +31,6 @@ header {
   color: #e8491d;
 }
 
-nav ul {
-  list-style: none;
-  float: right;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 10px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-}
 
 .btn {
   padding: 10px 20px;
