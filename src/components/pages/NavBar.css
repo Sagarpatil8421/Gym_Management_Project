@@ -19,6 +19,9 @@
   list-style: none;
 }
 
+ul.navbar-links {
+  margin-bottom: 0;
+}
 .navbar-links li {
   margin-left: 20px;
 }
