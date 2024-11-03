@@ -80,7 +80,7 @@ ul.navbar-links {
     display: none;
     margin: 0;
   }
-
+  
   .navbar-links.active {
     display: flex;
   }
