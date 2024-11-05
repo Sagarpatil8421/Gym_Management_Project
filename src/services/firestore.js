@@ -1,9 +1,11 @@
 import { db } from '../firebaseConfig';
-import { collection, addDoc, updateDoc, doc, deleteDoc, getDoc, query, where, getDocs  } from "firebase/firestore"; 
+import { collection, addDoc, updateDoc, doc, deleteDoc, getDoc, query, where, getDocs } from "firebase/firestore";
 
-
+// Collection references
 const membersCollection = collection(db, 'members');
+const billsCollection = collection(db, 'bills');
 
+// Member functions
 export const addMember = async (memberData) => {
   return await addDoc(membersCollection, memberData);
 };
@@ -30,29 +32,36 @@ export const getMemberByEmail = async (email) => {
   return members;
 };
 
+// Bill functions
+export const createBill = async (memberId, amount, dueDate, paymentDate) => {
+  const billData = {
+    memberId,
+    amount,
+    dueDate,
+    paymentDate: paymentDate || new Date().toISOString().split('T')[0], // Use today's date if no paymentDate is provided
+    createdAt: new Date()
+  };
+  return await addDoc(billsCollection, billData);
+};
 
-
-
-// Assuming the current user's ID is available
 export const getMemberBills = async (memberId) => {
-  const billsCollection = collection(db, 'bills');
-  const q = query(billsCollection, where('memberId', '==', memberId)); // Assuming 'memberId' is the field in your 'bills' collection
+  const q = query(billsCollection, where('memberId', '==', memberId)); 
   const querySnapshot = await getDocs(q);
   const bills = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   return bills;
 };
 
+// Notifications and search
 export const getMemberNotifications = async (memberId) => {
   const notificationsCollection = collection(db, 'notifications');
-  const q = query(notificationsCollection, where('memberId', '==', memberId)); // Assuming 'memberId' is the field in your 'notifications' collection
+  const q = query(notificationsCollection, where('memberId', '==', memberId)); 
   const querySnapshot = await getDocs(q);
   const notifications = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   return notifications;
 };
 
 export const searchMembers = async (searchTerm) => {
-  const membersCollection = collection(db, 'members');
-  const q = query(membersCollection, where('name', '==', searchTerm)); // Search by name (you can modify the search condition)
+  const q = query(membersCollection, where('name', '==', searchTerm)); 
   const querySnapshot = await getDocs(q);
   const members = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   return members;
