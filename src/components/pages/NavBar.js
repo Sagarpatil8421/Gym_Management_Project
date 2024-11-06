@@ -39,7 +39,7 @@ const NavBar = () => {
         <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
         {user ? (
           <>
-            <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link></li>
+            {/* <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link></li> */}
             <li><Link to="/member" onClick={() => setMenuOpen(false)}>Member Dashboard</Link></li>
             <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
           </>
