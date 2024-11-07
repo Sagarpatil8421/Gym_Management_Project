@@ -1,9 +1,21 @@
 import { db } from '../firebaseConfig';
-import { collection, addDoc, updateDoc, doc, deleteDoc, getDoc, query, where, getDocs } from "firebase/firestore";
+import { 
+  collection, 
+  addDoc, 
+  updateDoc, 
+  doc, 
+  deleteDoc, 
+  getDoc,
+  setDoc, 
+  query, 
+  where, 
+  getDocs 
+} from "firebase/firestore";
 
 // Collection references
 const membersCollection = collection(db, 'members');
 const billsCollection = collection(db, 'bills');
+const usersCollection = collection(db, 'users'); // New collection for storing user roles
 
 // Member functions
 export const addMember = async (memberData) => {
@@ -30,6 +42,28 @@ export const getMemberByEmail = async (email) => {
   const querySnapshot = await getDocs(q);
   const members = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   return members;
+};
+
+// Role functions
+export const assignUserRole = async (userId) => {
+  // Assign "user" role by default upon signup
+  const userDoc = doc(usersCollection, userId);
+  await setDoc(userDoc, { role: 'user' });
+};
+
+export const getUserRole = async (userId) => {
+  const userDoc = doc(usersCollection, userId);
+  const docSnapshot = await getDoc(userDoc);
+  if (docSnapshot.exists()) {
+    return docSnapshot.data().role;
+  } else {
+    throw new Error("User role not found");
+  }
+};
+
+export const changeUserRole = async (userId, newRole) => {
+  const userDoc = doc(usersCollection, userId);
+  return await updateDoc(userDoc, { role: newRole });
 };
 
 // Bill functions

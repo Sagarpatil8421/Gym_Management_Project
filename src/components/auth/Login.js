@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../services/auth';
-import './auth.css'; // Assuming auth.css contains styles for both login and signup
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+import './auth.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      navigate('/admin');
+      const userCredential = await login(email, password);
+      const userId = userCredential.user.uid;
+
+      // Fetch the user's role from Firestore
+      const userDoc = await getDoc(doc(db, 'users', userId));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        
+        // Check role and navigate accordingly
+        if (userData.role === 'admin') {
+          navigate('/admin'); // Admins can access the admin dashboard
+        } else {
+          navigate('/'); // Regular users have limited access
+        }
+      } else {
+        throw new Error('User data not found');
+      }
     } catch (error) {
       setError('Invalid credentials');
     }

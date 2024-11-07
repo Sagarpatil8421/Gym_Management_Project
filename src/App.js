@@ -6,18 +6,21 @@ import MemberDashboard from './components/member/MemberDashboard';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
 import NavBar from './components/pages/NavBar';
+import {AuthProvider} from './components/auth/AuthContext';
 
 function App() {
   return (
     <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/member" element={<MemberDashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
+      <AuthProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/member" element={<MemberDashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
