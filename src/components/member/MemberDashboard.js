@@ -157,14 +157,14 @@ const MemberDashboard = () => {
 
       {/* Member List */}
       <h2>Members List</h2>
-      <ul>
+      <ul className='members-list'>
         {members.map((member) => (
           <li key={member.id}>
             {member.name} - {member.email} - {member.phone}
-            <button onClick={() => { setEditMemberId(member.id); setNewMember(member); }}>Edit</button>
-            <button onClick={() => handleDeleteMember(member.id)}>Delete</button>
-            <button onClick={() => handleAddBill(member.id)}>Add Bill</button>
-            <button onClick={() => fetchMemberBills(member.id)}>View Bills</button>
+            <button className='edit' onClick={() => { setEditMemberId(member.id); setNewMember(member); }}>Edit</button>
+            <button className='delete' onClick={() => handleDeleteMember(member.id)}>Delete</button>
+            <button className='add-bill' onClick={() => handleAddBill(member.id)}>Add Bill</button>
+            <button className='view-bill' onClick={() => fetchMemberBills(member.id)}>View Bills</button>
           </li>
         ))}
       </ul>
