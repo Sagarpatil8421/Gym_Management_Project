@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig'; 
-import './auth.css'; 
+import { auth, db } from '../../firebaseConfig'; 
+import { doc, setDoc } from 'firebase/firestore';
+import './auth.css';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -19,16 +20,27 @@ const SignUp = () => {
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/'); // Redirect to home or dashboard after successful signup
+      // Create user with Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userId = userCredential.user.uid;
+
+      // Set default role to "user" in Firestore
+      await setDoc(doc(db, 'users', userId), {
+        email,
+        role: 'user', // Default role
+        createdAt: new Date(), // Optionally, you can store the creation time
+      });
+
+      // Redirect to home or dashboard after successful signup
+      navigate('/'); 
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div class="main_signup_container">
-        <div className="signup-container">
+    <div className="main_signup_container">
+      <div className="signup-container">
         <h2>Create an Account</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSignUp}>

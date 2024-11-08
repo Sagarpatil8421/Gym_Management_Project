@@ -9,9 +9,9 @@ const AdminDashboard = () => {
         <h1>Admin Dashboard</h1>
         <nav className="admin-nav">
           <ul className="admin-nav-links">
-            <li><Link to="/admin/members">Manage Members</Link></li>
-            <li><Link to="/admin/bills">Create Bills</Link></li>
-            <li><Link to="/admin/notifications">Assign Notifications</Link></li>
+            <li><Link to="/member">Manage Members</Link></li>
+            <li><Link to="/member">Create Bills</Link></li>
+            <li><Link to="/member">Assign Notifications</Link></li>
           </ul>
         </nav>
       </div>
