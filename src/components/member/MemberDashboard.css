@@ -37,6 +37,7 @@
   .member-dashboard button:hover {
     background-color: #218838;
   }
+
   
   .member-dashboard ul {
     list-style: none;
@@ -49,6 +50,24 @@
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  .member-dashboard .members-list .edit{
+    background-color: #4A90E2;
+  }
+  .member-dashboard .members-list .delete{
+    background-color: #FF5C5C;
+  }
+  .member-dashboard .members-list .add-bill{
+    background-color: #4CAF50;
+  }
+  .member-dashboard .members-list .view-bill{
+    background-color: #9E9E9E;
+  }
+
+  .member-dashboard .members-list button {
+    margin: 0 5px;
   }
   /* Member Dashboard CSS ends */
   
