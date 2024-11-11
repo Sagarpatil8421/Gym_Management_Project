@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LandingPage.css'; // Custom CSS for styling
+import ImageSlider from './ImageSlider';
 
 const LandingPage = () => {
   return (
@@ -13,6 +14,9 @@ const LandingPage = () => {
             <Link to="/signup" className="cta-btn">Sign Up Now</Link>
         </div>
       </section>
+
+      {/* Image Slider Section  */}
+      <ImageSlider />
 
       {/* Features Section */}
       <div className="features">
