@@ -47,7 +47,7 @@ header {
 
 /* Hero Section */
 #home {
-  background-image: url('../../../public/gymbg.webp'); /* Add a gym-related background image */
+  background-image: url('../../../public/img/gymbg-img.jpg'); /* Add a gym-related background image */
   background-size: cover;
   background-position: center;
   height: 100vh;
