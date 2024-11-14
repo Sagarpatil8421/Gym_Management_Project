@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './LandingPage.css'; // Custom CSS for styling
 import ImageSlider from './ImageSlider';
+import { colors } from '@mui/material';
 
 const LandingPage = () => {
   return (
@@ -9,7 +10,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section id="home">
         <div class="hero-container">
-            <h2>Welcome to HSJ FITNESS</h2>
+            <h2>Welcome to<b style={{color:'#ff6b6b'}}> MY FITNESS </b></h2>
             <p>Your fitness journey starts here. Let us help you reach your goals.</p>
             <Link to="/signup" className="cta-btn">Sign Up Now</Link>
         </div>
@@ -40,7 +41,7 @@ const LandingPage = () => {
       <section id="about">
           <div class="container">
               <h2>About Us</h2>
-              <p>HSJ FITNESS is dedicated to providing top-notch fitness facilities and guidance. We have modern equipment, professional trainers, and a community that will motivate you to reach your fitness potential.</p>
+              <p><b style={{color:'#ff6b6b'}}>MY FITNESS</b> is dedicated to providing top-notch fitness facilities and guidance. We have modern equipment, professional trainers, and a community that will motivate you to reach your fitness potential.</p>
           </div>
       </section>
       
