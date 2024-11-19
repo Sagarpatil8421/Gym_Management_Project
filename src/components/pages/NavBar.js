@@ -17,15 +17,20 @@ const NavBar = () => {
   }, []);
 
   const handleLogout = async () => {
-    await signOut(auth);
-    setMenuOpen(false); // Close the menu when logging out
-    navigate('/');
+    var confirmLogout =window.confirm("Do you want to log out of your account?");
+    if(confirmLogout){
+      await signOut(auth);
+      setMenuOpen(false); // Close the menu when logging out
+      navigate('/');
+    }
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/" onClick={() => setMenuOpen(false)}>Gym Management</Link>
+        <Link to="/" onClick={() => setMenuOpen(false)}>
+        <img src="/img/gym-logo.png" alt="Gym Logo" className="gym-logo" style={{height:'60px'}}/>
+        </Link>
       </div>
 
       {/* Hamburger Menu for Mobile */}
