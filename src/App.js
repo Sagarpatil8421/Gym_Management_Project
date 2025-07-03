@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
 import NavBar from './components/pages/NavBar';
 import {AuthProvider} from './components/auth/AuthContext';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   return (
@@ -15,8 +16,22 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/member" element={<MemberDashboard />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <MemberDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

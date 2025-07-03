@@ -30,9 +30,21 @@ const MemberDashboard = () => {
   const [bills, setBills] = useState([]);
   const [showBillsModal, setShowBillsModal] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
+  const [isBillModalOpen, setIsBillModalOpen] = useState(false);
+  const [billAmount, setBillAmount] = useState('');
+  const [billPlan, setBillPlan] = useState('1');
+  const [selectedMemberId, setSelectedMemberId] = useState(null);
 
   const { currentUser, role } = useAuth(); // Get current user and role from AuthContext
   const navigate = useNavigate();
+
+  const planOptions = [
+    { label: '1 Month', value: 1 },
+    { label: '2 Months', value: 2 },
+    { label: '3 Months', value: 3 },
+    { label: '6 Months', value: 6 },
+    { label: '12 Months', value: 12 },
+  ];
 
   useEffect(() => {
     // Check if the user is logged in and has admin role
@@ -98,22 +110,42 @@ const MemberDashboard = () => {
     }
   };
 
-  const handleAddBill = async (memberId) => {
-    const amount = prompt('Enter Bill Amount:');
-    const dueDate = prompt('Enter Due Date (YYYY-MM-DD):');
-  
-    if (amount && dueDate) {
-      try {
-        const paymentDate = new Date().toISOString().split('T')[0];
-        await createBill(memberId, amount, dueDate, paymentDate);
-        alert('Bill added successfully!');
-        fetchMemberBills(memberId);
-      } catch (error) {
-        console.error('Error adding bill:', error);
-        setError('Error adding bill: ' + error.message);
-      }
-    } else {
-      alert('Both Amount and Due Date are required.');
+  const openBillModal = (memberId) => {
+    setSelectedMemberId(memberId);
+    setBillAmount('');
+    setBillPlan('1');
+    setIsBillModalOpen(true);
+  };
+
+  const closeBillModal = () => {
+    setIsBillModalOpen(false);
+    setSelectedMemberId(null);
+    setBillAmount('');
+    setBillPlan('1');
+  };
+
+  const calculateDueDate = (months) => {
+    const now = new Date();
+    now.setMonth(now.getMonth() + Number(months));
+    return now.toISOString().split('T')[0];
+  };
+
+  const handleBillSubmit = async (e) => {
+    e.preventDefault();
+    if (!billAmount || isNaN(billAmount) || Number(billAmount) <= 0) {
+      setError('Please enter a valid amount.');
+      return;
+    }
+    const dueDate = calculateDueDate(billPlan);
+    const paymentDate = new Date().toISOString().split('T')[0];
+    try {
+      await createBill(selectedMemberId, billAmount, dueDate, paymentDate);
+      closeBillModal();
+      fetchMembers();
+      setError('');
+      alert('Bill added successfully!');
+    } catch (error) {
+      setError('Error adding bill: ' + error.message);
     }
   };
 
@@ -163,7 +195,7 @@ const MemberDashboard = () => {
             {member.name} - {member.email} - {member.phone}
             <button className='edit' onClick={() => { setEditMemberId(member.id); setNewMember(member); }}>Edit</button>
             <button className='delete' onClick={() => handleDeleteMember(member.id)}>Delete</button>
-            <button className='add-bill' onClick={() => handleAddBill(member.id)}>Add Bill</button>
+            <button className='add-bill' onClick={() => openBillModal(member.id)}>Add Bill</button>
             <button className='view-bill' onClick={() => fetchMemberBills(member.id)}>View Bills</button>
           </li>
         ))}
@@ -202,6 +234,41 @@ const MemberDashboard = () => {
       >
         <h2>Member Already Exists!</h2>
         <button onClick={closeModal}>Close</button>
+      </Modal>
+
+      <Modal
+        isOpen={isBillModalOpen}
+        onRequestClose={closeBillModal}
+        style={customStyles}
+        contentLabel="Add Bill Modal"
+      >
+        <h2>Add Bill</h2>
+        <form onSubmit={handleBillSubmit}>
+          <input
+            type="number"
+            placeholder="Amount"
+            value={billAmount}
+            onChange={e => setBillAmount(e.target.value)}
+            required
+            min="1"
+            style={{ marginBottom: '10px', width: '100%' }}
+          />
+          <select
+            value={billPlan}
+            onChange={e => setBillPlan(e.target.value)}
+            style={{ marginBottom: '10px', width: '100%' }}
+          >
+            {planOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          <div style={{ marginBottom: '10px' }}>
+            <strong>Due Date: </strong>{billPlan ? calculateDueDate(billPlan) : ''}
+          </div>
+          <button type="submit" style={{ marginRight: '10px' }}>Add Bill</button>
+          <button type="button" onClick={closeBillModal}>Cancel</button>
+        </form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </Modal>
     </div>
   );
