@@ -51,36 +51,145 @@ header {
 
 /* Hero Section */
 #home {
-  background-image: url('../../../public/img/gymbg-img.jpg'); /* Add a gym-related background image */
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/public/img/gymbg-img.jpg') no-repeat center center/cover;
+  color: var(--text-light);
+}
+
+.hero-container h2 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-container h2 .highlight {
+  color: var(--accent-color);
+}
+
+.hero-container p {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-family: var(--font-body);
+}
+
+.cta-btn {
+  background: var(--accent-color);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Features Section */
+.features {
+  padding: 5rem 2rem;
+  background-color: var(--dark-bg-secondary);
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.feature-list {
   display: flex;
   justify-content: center;
-  align-items: center;
-  color: #fff;
-  text-align: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-#home h2 {
-  font-size: 48px;
+.feature {
+  background: #6e6e6e;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 300px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
 
-#home p {
-  font-size: 20px;
-  margin: 20px 0;
+.feature:hover {
+  transform: translateY(-10px);
 }
 
-/* About Us Section */
+.feature h3 {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+/* About Section */
 #about {
-  padding: 40px 0;
-  background-color: #fff;
+  padding: 5rem 2rem;
+  background-color: #232323;
+}
+
+#about .container {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
+}
+
+#about h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
 #about p {
-  max-width: 600px;
-  margin: auto;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+#about .highlight {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+#about .container, #about p, #about h2 {
+  color: var(--text-light);
+}
+
+/* Call to Action & Contact */
+.call-to-action, #contact {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: var(--dark-bg-secondary);
+}
+
+.call-to-action h2, #contact h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#contact p {
+  color: var(--text-light);
+  opacity: 0.9;
 }
 
 /* Services Section */
@@ -105,18 +214,6 @@ header {
   margin-bottom: 10px;
 }
 
-/* Contact Section */
-#contact {
-  padding: 40px 0;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-}
-
-#contact p {
-  margin: 10px 0;
-}
-
 /* Footer */
 footer {
   background-color: #222;
@@ -125,70 +222,214 @@ footer {
   padding: 10px 0;
 }
 
-
-
-
 .landing-page {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-  }
-  
-  .hero {
-    background-color: #f7f7f7;
-    padding: 50px;
-    text-align: center;
-  }
-  
-  .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  .hero p {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-  
-  .cta-btn {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .features {
-    padding: 50px;
-    background-color: #f0f0f0;
-    text-align: center;
-  }
-  
-  .feature-list {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-  }
-  
-  .feature {
-    max-width: 300px;
-  }
-  
-  .call-to-action {
-    padding: 50px;
-    text-align: center;
-    background-color: #e2e2e2;
-  }
-  
-  .call-to-action h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
+  overflow-x: hidden;
+}
+
 @media (max-width:768px){
   .feature-list{
     flex-direction:column;
     align-items: center;
+  }
+}
+
+.stats-section {
+  width: 100%;
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  padding: 48px 0 32px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.stats-container {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+  min-width: 180px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.stat:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+}
+
+.stat-icon {
+  font-size: 48px !important;
+  color: #ff5722;
+  margin-bottom: 12px;
+  animation: pop 0.8s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.stat h3 {
+  font-size: 2.5rem;
+  color: #232526;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.stat p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .stats-container {
+    gap: 24px;
+  }
+  .stat {
+    min-width: 140px;
+    padding: 24px 12px;
+  }
+}
+
+/* Testimonials Carousel */
+.testimonials-section {
+  width: 100%;
+  background: #f7f7f7;
+  padding: 48px 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #232526;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+.carousel-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.carousel-arrow {
+  background: none;
+  border: none;
+  color: #ff5722;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 8px;
+  border-radius: 50%;
+}
+.carousel-arrow:hover {
+  background: #ffe3d3;
+  color: #d84315;
+}
+.testimonial-card {
+  min-width: 320px;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 24px 16px;
+  background: #fff;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.testimonial-avatar {
+  width: 72px !important;
+  height: 72px !important;
+  margin-bottom: 16px;
+  border: 3px solid #ff5722;
+}
+.testimonial-quote {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.testimonial-name {
+  font-size: 1rem;
+  color: #ff5722;
+  font-weight: 600;
+}
+
+/* Featured Programs Grid */
+.programs-section {
+  width: 100%;
+  background: #fff;
+  padding: 48px 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.programs-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+.program-card {
+  min-width: 220px;
+  max-width: 260px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 24px 16px;
+  background: #f7f7f7;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.program-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(255,87,34,0.12);
+  background: #fff3e0;
+}
+.program-icon {
+  font-size: 48px !important;
+  color: #ff5722;
+  margin-bottom: 12px;
+  animation: pop 0.8s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.program-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #232526;
+  margin-bottom: 8px;
+}
+.program-desc {
+  font-size: 1rem;
+  color: #555;
+}
+
+@media (max-width: 900px) {
+  .carousel-container, .programs-grid {
+    gap: 16px;
+  }
+  .testimonial-card, .program-card {
+    min-width: 180px;
+    max-width: 90vw;
+    padding: 16px 8px;
   }
 }

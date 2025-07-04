@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css'; // NavBar styling
 import { onAuthStateChanged, signOut } from 'firebase/auth'; // Firebase auth methods
 import { auth } from '../../firebaseConfig'; // Your Firebase config
+import { useAuth } from '../auth/AuthContext';
 
 const NavBar = () => {
+  const { currentUser, role, logout } = useAuth();
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // Track menu state for mobile
   const navigate = useNavigate();
@@ -42,10 +44,15 @@ const NavBar = () => {
 
       <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
         <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-        {user ? (
+        {currentUser ? (
           <>
-            {/* <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link></li> */}
-            <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link></li>
+            {role === 'admin' && (
+              <>
+                <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link></li>
+                <li><Link to="/member" onClick={() => setMenuOpen(false)}>Member Dashboard</Link></li>
+              </>
+            )}
+            {/* Add more role-based links here */}
             <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
           </>
         ) : (
