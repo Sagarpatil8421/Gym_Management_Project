@@ -188,7 +188,7 @@ This project is licensed under the MIT License.
 
 ## 📬 Contact
 
-- **Email**: support@gymmanage.com
+- **Email**: support@myfitness.com
 - **Phone**: +123 456 7890
 - **Author**: Sagar Patil
 

@@ -137,7 +137,7 @@ const LandingPage = () => {
           <div className="container">
               <h2>Contact Us</h2>
               <p>Have any questions or want to learn more? Reach out to us anytime!</p>
-              <p>Email: support@gymmanage.com | Phone: +123 456 7890</p>
+              <p>Email: support@myfitness.com | Phone: +123 456 7890</p>
           </div>
       </section>
     </div>

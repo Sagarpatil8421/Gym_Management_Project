@@ -18,6 +18,31 @@ const testimonials = [
     name: 'Rahul Verma',
     photo: 'https://randomuser.me/api/portraits/men/65.jpg',
     quote: 'The notifications and digital receipts make everything so easy. Best gym in town!'
+  },
+  {
+    name: 'Sneha Patel',
+    photo: 'https://randomuser.me/api/portraits/women/68.jpg',
+    quote: 'The gym environment is always clean and welcoming. The reminders for classes and payments are super helpful!'
+  },
+  {
+    name: 'Rohan Deshmukh',
+    photo: 'https://randomuser.me/api/portraits/men/76.jpg',
+    quote: 'Easy payment methods and instant digital receipts make managing my membership hassle-free.'
+  },
+  {
+    name: 'Meera Nair',
+    photo: 'https://randomuser.me/api/portraits/women/12.jpg',
+    quote: 'I appreciate the timely notifications for offers and events. The trainers are very supportive.'
+  },
+  {
+    name: 'Karan Malhotra',
+    photo: 'https://randomuser.me/api/portraits/men/41.jpg',
+    quote: 'The app is user-friendly and the admin team is always responsive. Love the new features!'
+  },
+  {
+    name: 'Ayesha Khan',
+    photo: 'https://randomuser.me/api/portraits/women/50.jpg',
+    quote: 'Great community, motivating trainers, and the best digital experience for gym members.'
   }
 ];
 

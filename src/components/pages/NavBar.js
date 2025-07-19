@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css'; // NavBar styling
-import { onAuthStateChanged, signOut } from 'firebase/auth'; // Firebase auth methods
+import { signOut } from 'firebase/auth'; // Firebase auth methods
 import { auth } from '../../firebaseConfig'; // Your Firebase config
 import { useAuth } from '../auth/AuthContext';
 
 const NavBar = () => {
-  const { currentUser, role, logout } = useAuth();
-  const [user, setUser] = useState(null);
+  const { currentUser, role } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false); // Track menu state for mobile
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
 
   const handleLogout = async () => {
     var confirmLogout =window.confirm("Do you want to log out of your account?");
