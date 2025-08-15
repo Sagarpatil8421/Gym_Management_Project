@@ -352,6 +352,8 @@ footer {
   background: #fff;
   text-align: center;
   transition: box-shadow 0.2s;
+  height: 240px;
+  overflow-y: auto;
 }
 .testimonial-avatar {
   width: 72px !important;

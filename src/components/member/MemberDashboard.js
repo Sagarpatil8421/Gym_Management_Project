@@ -189,17 +189,27 @@ const MemberDashboard = () => {
 
       {/* Member List */}
       <h2>Members List</h2>
-      <ul className='members-list'>
+      <div className='members-list-grid'>
         {members.map((member) => (
-          <li key={member.id}>
-            {member.name} - {member.email} - {member.phone}
-            <button className='edit' onClick={() => { setEditMemberId(member.id); setNewMember(member); }}>Edit</button>
-            <button className='delete' onClick={() => handleDeleteMember(member.id)}>Delete</button>
-            <button className='add-bill' onClick={() => openBillModal(member.id)}>Add Bill</button>
-            <button className='view-bill' onClick={() => fetchMemberBills(member.id)}>View Bills</button>
-          </li>
+          <div className='member-card' key={member.id}>
+            <div className='member-avatar'>
+              {member.name ? member.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2) : '?'}
+            </div>
+            <div className='member-info'>
+              <div className='member-name'>{member.name}</div>
+              <div className='member-detail'><span>Email:</span> {member.email}</div>
+              <div className='member-detail'><span>Phone:</span> {member.phone}</div>
+              <div className='member-detail'><span>Address:</span> {member.address}</div>
+            </div>
+            <div className='member-actions'>
+              <button className='edit' onClick={() => { setEditMemberId(member.id); setNewMember(member); }}>Edit</button>
+              <button className='delete' onClick={() => handleDeleteMember(member.id)}>Delete</button>
+              <button className='add-bill' onClick={() => openBillModal(member.id)}>Add Bill</button>
+              <button className='view-bill' onClick={() => fetchMemberBills(member.id)}>View Bills</button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
 
       {/* Modal for Viewing Bills */}
       <Modal

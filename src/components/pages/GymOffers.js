@@ -1,4 +1,6 @@
 import React from 'react';
+import { useAuth } from '../auth/AuthContext';
+import { createInvoice } from '../../services/payment';
 import './GymOffers.css';
 
 const offers = [
@@ -34,32 +36,77 @@ const offers = [
   },
 ];
 
-const GymOffers = () => (
-  <section id="offers" className="gym-offers-section">
-    <h2 className="offers-title">Membership Offers</h2>
-    <div className="offers-container">
-      {offers.map((offer, idx) => (
-        <div className="offer-box" key={idx}>
-          <img src={offer.image} alt={`${offer.duration} Plan`} className="offer-image" />
-          <div className="offer-content">
-            <h3 className="offer-duration">{offer.duration}</h3>
-            <h4 className="offer-catchphrase">{offer.title}</h4>
-            <p className="offer-description">
-              {offer.description_part1}
-              <strong>{offer.description_bold}</strong>
-              {offer.description_part2}
-            </p>
-            <div className="offer-prices">
-              <span className="regular-price">₹{offer.regular_price}</span>
-              <span className="offer-price">₹{offer.offer_price}</span>
+const GymOffers = () => {
+  const { currentUser } = useAuth();
+
+  const handlePayment = async (offer) => {
+    if (!currentUser) {
+      alert('Please login to purchase a membership!');
+      return;
+    }
+
+    try {
+      // Correctly handle "1 Year" as 12 months
+      let planMonths = 1;
+      if (offer.duration.toLowerCase().includes('year')) {
+        planMonths = 12;
+      } else {
+        planMonths = parseInt(offer.duration) || 1;
+      }
+      const customerName = currentUser.email.split('@')[0];
+
+      const invoiceRes = await createInvoice(
+        offer.offer_price,
+        customerName,
+        currentUser.email,
+        offer.duration,
+        planMonths
+      );
+
+      if (invoiceRes.success && invoiceRes.invoice && invoiceRes.invoice.short_url) {
+        // Redirect to Razorpay invoice payment page
+        window.location.href = invoiceRes.invoice.short_url;
+      } else {
+        alert('Failed to create invoice. Please try again.');
+        console.error('Invoice creation failed:', invoiceRes);
+      }
+    } catch (error) {
+      console.error('Invoice creation error:', error);
+      alert('Failed to create invoice. Please try again.');
+    }
+  };
+
+  return (
+    <section id="offers" className="gym-offers-section">
+      <h2 className="offers-title">Membership Offers</h2>
+      <div className="offers-container">
+        {offers.map((offer, idx) => (
+          <div className="offer-box" key={idx}>
+            <img src={offer.image} alt={`${offer.duration} Plan`} className="offer-image" />
+            <div className="offer-content">
+              <h3 className="offer-duration">{offer.duration}</h3>
+              <h4 className="offer-catchphrase">{offer.title}</h4>
+              <p className="offer-description">
+                {offer.description_part1}
+                <strong>{offer.description_bold}</strong>
+                {offer.description_part2}
+              </p>
+              <div className="offer-prices">
+                <span className="regular-price">₹{offer.regular_price}</span>
+                <span className="offer-price">₹{offer.offer_price}</span>
+              </div>
+              <button 
+                className="offer-btn" 
+                onClick={() => handlePayment(offer)}
+              >
+                Grab Offer
+              </button>
             </div>
-            {/* <div className="offer-highlight">{offer.highlight}</div> */}
-            <button className="offer-btn">Grab Offer</button>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default GymOffers; 

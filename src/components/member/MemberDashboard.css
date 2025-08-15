@@ -69,5 +69,172 @@
   .member-dashboard .members-list button {
     margin: 0 5px;
   }
+
+  .members-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 1200px) {
+    .members-list-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Modern Member Card Styles */
+  .member-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .member-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .member-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+
+  .member-info {
+    text-align: center;
+  }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .member-detail {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .member-detail span {
+    font-weight: 500;
+    color: #555;
+  }
+
+  .member-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .member-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .member-actions button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .member-actions .edit {
+    background-color: #4A90E2;
+    color: white;
+  }
+
+  .member-actions .edit:hover {
+    background-color: #357ABD;
+  }
+
+  .member-actions .delete {
+    background-color: #FF5C5C;
+    color: white;
+  }
+
+  .member-actions .delete:hover {
+    background-color: #E53E3E;
+  }
+
+  .member-actions .add-bill {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .member-actions .add-bill:hover {
+    background-color: #45A049;
+  }
+
+  .member-actions .view-bill {
+    background-color: #9E9E9E;
+    color: white;
+  }
+
+  .member-actions .view-bill:hover {
+    background-color: #757575;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .members-list-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    .member-card {
+      padding: 16px;
+    }
+    
+    .member-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .member-dashboard {
+      padding: 16px;
+    }
+    
+    .member-avatar {
+      width: 50px;
+      height: 50px;
+      font-size: 16px;
+    }
+    
+    .member-name {
+      font-size: 16px;
+    }
+    
+    .member-detail {
+      font-size: 13px;
+    }
+  }
   /* Member Dashboard CSS ends */
   
